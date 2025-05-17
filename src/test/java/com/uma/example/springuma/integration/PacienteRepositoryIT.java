@@ -1,6 +1,6 @@
-// 
+// Eduardo Ariza Abad y Enrique Ibañez Rico
 
-package com.uma.example.springuma.integration.base;
+package com.uma.example.springuma.integration;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
