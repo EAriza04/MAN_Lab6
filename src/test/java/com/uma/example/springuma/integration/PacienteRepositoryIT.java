@@ -2,17 +2,13 @@
 
 package com.uma.example.springuma.integration;
 
+import com.uma.example.springuma.model.*;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-
-import com.uma.example.springuma.model.Medico;
-import com.uma.example.springuma.model.Paciente;
-import com.uma.example.springuma.model.RepositoryPaciente;
-import com.uma.example.springuma.model.RepositoryMedico;
-
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;

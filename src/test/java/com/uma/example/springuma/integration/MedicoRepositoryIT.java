@@ -2,8 +2,7 @@
 
 package com.uma.example.springuma.integration;
 
-import com.uma.example.springuma.model.Medico;
-import com.uma.example.springuma.model.RepositoryMedico;
+import com.uma.example.springuma.model.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -27,7 +26,7 @@ class MedicoRepositoryIT {
         // Arrange
         medico = new Medico();
         medico.setNombre("Medico");
-        medico.setDni("122");
+        medico.setDni("12345678A");
         medico.setEspecialidad("Cirugía");
     }
 
