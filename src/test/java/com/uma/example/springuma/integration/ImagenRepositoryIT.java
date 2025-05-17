@@ -4,7 +4,6 @@ package com.uma.example.springuma.integration;
 
 import com.uma.example.springuma.model.*;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,31 +25,25 @@ public class ImagenRepositoryIT {
     @Autowired
     private RepositoryMedico medicoRepository;
 
-    private Medico medico;
-
-    private Paciente paciente;
-
-    @BeforeEach
-    void setUp() {
-        medico = new Medico();
+    @Test
+    @DisplayName("Check imagen is persisted in the BBDD when created")
+    void givenImagenEntity_whenSave_thenImagenIsPersisted() {
+        // Arrange
+        Medico medico = new Medico();
         medico.setNombre("Medico");
         medico.setDni("12345678A");
         medico.setEspecialidad("Cirugía");
         medico = medicoRepository.save(medico);
 
-        paciente = new Paciente();
+        Paciente paciente = new Paciente();
         paciente.setNombre("Paciente");
         paciente.setEdad(23);
         paciente.setCita("2023-10-01");
         paciente.setDni("87654321B");
         paciente.setMedico(medico);
         paciente = pacienteRepository.save(paciente);
-    }
 
-    @Test
-    @DisplayName("Check imagen is persisted in the BBDD when created")
-    void givenImagenEntity_whenSave_thenImagenIsPersisted() {
-        // Arrange
+
         Imagen imagen = new Imagen();
         imagen.setNombre("imagen.png");
         imagen.setFecha(Calendar.getInstance());
