@@ -31,12 +31,12 @@ public class PacienteControllerWebTestClientIT {
 
         medico1 = new Medico();
         medico1.setNombre("Medico1");
-        medico1.setDni("M" + (int)(Math.random() * 99999999) + "A");
+        medico1.setDni((int)(Math.random() * 99999999) + "A");
         medico1.setEspecialidad("Pediatría");
 
         medico2 = new Medico();
         medico2.setNombre("Medico2");
-        medico2.setDni("M" + (int)(Math.random() * 99999999) + "B");
+        medico2.setDni((int)(Math.random() * 99999999) + "B");
         medico2.setEspecialidad("Cardiología");
     }
 
@@ -63,7 +63,7 @@ public class PacienteControllerWebTestClientIT {
         pacienteTest.setNombre("Paciente");
         pacienteTest.setEdad(30);
         pacienteTest.setCita("2024-06-01");
-        pacienteTest.setDni("P" + (int)(Math.random() * 99999999) + "Z");
+        pacienteTest.setDni((int)(Math.random() * 99999999) + "Z");
         pacienteTest.setMedico(medicoCreado);
 
         // Crear paciente
@@ -137,7 +137,7 @@ public class PacienteControllerWebTestClientIT {
         pacienteTest.setNombre("Paciente");
         pacienteTest.setEdad(30);
         pacienteTest.setCita("2024-06-01");
-        pacienteTest.setDni("P" + (int)(Math.random() * 99999999) + "Z");
+        pacienteTest.setDni((int)(Math.random() * 99999999) + "Z");
         pacienteTest.setMedico(m1);
 
         // Crear paciente
