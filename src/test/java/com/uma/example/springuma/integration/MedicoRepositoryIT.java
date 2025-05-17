@@ -23,7 +23,8 @@ class MedicoRepositoryIT {
     private Medico medico;
 
     @BeforeEach
-    void createMedicoEntity() {
+    void setUp() {
+        // Arrange
         medico = new Medico();
         medico.setNombre("Medico");
         medico.setDni("122");
@@ -33,10 +34,10 @@ class MedicoRepositoryIT {
     @Test
     @DisplayName("Check medico is persited in the BBDD when created")
     void givenMedicoEntity_whenSaveUser_thenUserIsPersisted() {
-        // act
+        // Act
         Medico savedMedico = medicoRepository.save(medico);
 
-        // assert
+        // Assert
         Optional<Medico> retrievedMedico = medicoRepository.findById(savedMedico.getId());
         assertTrue(retrievedMedico.isPresent());
         assertEquals("Medico", retrievedMedico.get().getNombre());
@@ -45,14 +46,14 @@ class MedicoRepositoryIT {
     @Test
     @DisplayName("Check medico is changed in the BBDD when updated")
     void givenMedicoEntity_whenUpdateUser_thenUserIsUpdated() {
-        // act
+        // Act
         Medico savedMedico = medicoRepository.save(medico);
         savedMedico.setNombre("Medico2");
         savedMedico.setDni("123");
         savedMedico.setEspecialidad("Cardiología");
         medicoRepository.save(savedMedico);
 
-        // assert
+        // Assert
         Optional<Medico> updatedMedico = medicoRepository.findById(savedMedico.getId());
         assertTrue(updatedMedico.isPresent());
         assertEquals("Medico2", updatedMedico.get().getNombre());
@@ -63,10 +64,10 @@ class MedicoRepositoryIT {
     @Test
     @DisplayName("Check medico is retrieved in the BBDD when searched")
     void givenMedicoEntity_whenFindUser_thenUserIsFound(){
-        // act
+        // Act
         Medico savedMedico = medicoRepository.save(medico);
 
-        // assert
+        // Assert
         Optional<Medico> retrievedMedico = medicoRepository.findById(savedMedico.getId());
         assertTrue(retrievedMedico.isPresent());
     }
@@ -74,11 +75,11 @@ class MedicoRepositoryIT {
     @Test
     @DisplayName("Check medico is deleted in the BBDD when deleted")
     void givenMedicoEntity_whenDeleteUser_thenUserIsDeleted() {
-        // act
+        // Act
         Medico savedMedico = medicoRepository.save(medico);
         medicoRepository.delete(savedMedico);
 
-        // assert
+        // Assert
         Optional<Medico> deletedMedico = medicoRepository.findById(savedMedico.getId());
         assertFalse(deletedMedico.isPresent());
     }
