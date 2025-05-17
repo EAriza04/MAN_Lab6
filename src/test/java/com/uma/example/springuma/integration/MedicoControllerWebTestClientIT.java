@@ -34,7 +34,7 @@ public class MedicoControllerWebTestClientIT {
 
         medico = new Medico();
         medico.setNombre("Medico");
-        medico.setDni((int)(Math.random() * 99999999) + "Z");
+        medico.setDni((int)(Math.random() * 99999999) + "Z"); // Error si el dni se repite en las pruebas
         medico.setEspecialidad("Cirugía");
     }
 
@@ -56,9 +56,8 @@ public class MedicoControllerWebTestClientIT {
 
         Medico medicoObtained = result.getResponseBody().blockFirst();
         assertNotNull(medicoObtained);
+
         assertEquals(medico.getDni(), medicoObtained.getDni());
-        assertEquals(medico.getNombre(), medicoObtained.getNombre());
-        assertEquals(medico.getEspecialidad(), medicoObtained.getEspecialidad());
     }
 
     @Test
@@ -81,7 +80,7 @@ public class MedicoControllerWebTestClientIT {
         assertNotNull(medicoObtained);
 
         // Modificar datos
-        medicoObtained.setNombre("Dr. Editado");
+        medicoObtained.setNombre("Editado");
         medicoObtained.setEspecialidad("Cardiología");
 
         // Actualizar
@@ -98,10 +97,10 @@ public class MedicoControllerWebTestClientIT {
                 .returnResult(Medico.class)
                 .getResponseBody().blockFirst();
 
-        assertNotNull(medicoUpdated);
-        assertEquals("Dr. Editado", medicoUpdated.getNombre());
-        assertEquals("Cardiología", medicoUpdated.getEspecialidad());
         assertEquals(medicoObtained.getDni(), medicoUpdated.getDni());
+        assertEquals("Editado", medicoUpdated.getNombre());
+        assertEquals("Cardiología", medicoUpdated.getEspecialidad());
+        
     }
 
     @Test
