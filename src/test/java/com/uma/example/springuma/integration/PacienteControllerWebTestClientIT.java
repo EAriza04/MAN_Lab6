@@ -1,3 +1,5 @@
+// Eduardo Ariza Abad y Enrique Ibañez Rico
+
 package com.uma.example.springuma.integration;
 
 import com.uma.example.springuma.model.*;
@@ -10,7 +12,6 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 import reactor.core.publisher.Mono;
 import jakarta.annotation.PostConstruct;
 import java.time.Duration;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
