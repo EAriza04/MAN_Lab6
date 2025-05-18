@@ -81,10 +81,31 @@ public class ImagenControllerWebTestClientIT {
     @Test
     @DisplayName("Realizar predicción aleatoria sobre imagen")
     public void predictImage_ShouldReturnPrediction() {
-        long imagenId = 1L;
+        File uploadFile = new File("./src/test/resources/no_healthty.png");
+
+        // Primero se crea el paciente
+        client.post()
+            .uri("/paciente")
+            .body(Mono.just(paciente), Paciente.class)
+            .exchange()
+            .expectStatus().isCreated();
+
+        // Se construye el cuerpo multipart para subir la imagen
+        MultipartBodyBuilder builder = new MultipartBodyBuilder();
+        builder.part("image", new FileSystemResource(uploadFile));
+        builder.part("paciente", paciente, MediaType.APPLICATION_JSON);
+
+        // Subida de imagen y validación del JSON de respuesta
+        client.post()
+            .uri("/imagen")
+            .contentType(MediaType.MULTIPART_FORM_DATA)
+            .body(BodyInserters.fromMultipartData(builder.build()))
+            .exchange()
+            .expectStatus().isOk()
+            .expectBody().returnResult();
 
         client.get()
-            .uri("/imagen/predict/{id}", imagenId)
+            .uri("/imagen/predict/1")
             .accept(MediaType.APPLICATION_JSON)
             .exchange()
             .expectStatus().isOk()
